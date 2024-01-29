@@ -42,71 +42,83 @@ export const weatherOptions = [
     url: require("../images/sunnyDay.svg").default,
     day: true,
     type: "Clear",
+    alt: "sunnyDay",
   },
 
   {
     url: require("../images/cloudDay.svg").default,
     day: true,
     type: "Clouds",
+    alt: "cloudDay",
   },
 
   {
     url: require("../images/rainDay.svg").default,
     day: true,
     type: "Rain",
+    alt: "rainDay",
   },
 
   {
     url: require("../images/stormDay.svg").default,
     day: true,
     type: "Thunderstorm",
+    alt: "stormDay",
   },
 
   {
     url: require("../images/snowDay.svg").default,
     day: true,
     type: "Snow",
+    alt: "snowDay",
   },
 
   {
     url: require("../images/mistDay.svg").default,
     day: true,
     type: "Mist",
+    alt: "mistDay",
   },
 
   {
     url: require("../images/moonNight.svg").default,
     day: false,
     type: "Clear",
+    alt: "moonNight",
   },
 
   {
     url: require("../images/cloudNight.svg").default,
     day: false,
     type: "Clouds",
+    alt: "cloudNight",
   },
 
   {
     url: require("../images/rainNight.svg").default,
     day: false,
     type: "Rain",
+    alt: "rainNight",
   },
 
   {
     url: require("../images/stormNight.svg").default,
     day: false,
     type: "Thunderstorm",
+    alt: "stormNight",
   },
 
   {
     url: require("../images/snowNight.svg").default,
     day: false,
     type: "Snow",
+    alt: "snowNight",
   },
 
   {
     url: require("../images/mistNight.svg").default,
     day: false,
     type: "Mist",
+    alt: "mistNight",
   },
 ];
