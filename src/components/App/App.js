@@ -1,11 +1,11 @@
 import "./App.css";
-import Header from "./components/Header/Header";
-import Main from "./components/Main/Main";
-import Footer from "./components/Footer/Footer";
-import ModalWithForm from "./components/ModalWithForm/ModalWithForm";
+import Header from "../Header/Header";
+import Main from "../Main/Main";
+import Footer from "../Footer/Footer";
+import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import { useEffect, useState } from "react";
-import ItemModal from "./components/ItemModal/ItemModal";
-import { getForecastWeather, parseWeatherData } from "./utils/weatherApi";
+import ItemModal from "../ItemModal/ItemModal";
+import { getForecastWeather, parseWeatherData } from "../../utils/weatherApi";
 
 export default function App() {
   const [activeModal, setActiveModal] = useState("");
@@ -26,32 +26,51 @@ export default function App() {
   };
 
   useEffect(() => {
-    getForecastWeather().then((data) => {
-      const temperature = parseWeatherData(data);
-      console.log(temperature);
-      setWeather(temperature);
-    });
+    getForecastWeather()
+      .then((data) => {
+        const temperature = parseWeatherData(data);
+        setWeather(temperature);
+      })
+      .catch(console.error);
   }, []);
 
   useEffect(() => {
-    const closeEsc = (e) => {
+    if (!activeModal) return;
+
+    const handleEscClose = (e) => {
       if (e.key === "Escape") {
-        setActiveModal("");
+        handleCloseModal();
       }
     };
-    window.addEventListener("keydown", closeEsc);
-    return () => window.removeEventListener("keydown", closeEsc);
-  }, []);
+
+    document.addEventListener("keydown", handleEscClose);
+
+    return () => {
+      document.removeEventListener("keydown", handleEscClose);
+    };
+  }, [activeModal]); // watch activeModal here
+
+  // useEffect(() => {
+  //   const closeEsc = (e) => {
+  //     if (e.key === "Escape") {
+  //       setActiveModal("");
+  //     }
+  //   };
+  //   window.addEventListener("keydown", closeEsc);
+  //   return () => window.removeEventListener("keydown", closeEsc);
+  // }, []);
 
   useEffect(() => {
+    if (!activeModal) return;
+
     const closeOutside = (e) => {
       if (e.target.classList.contains("modal")) {
-        setActiveModal("");
+        handleCloseModal();
       }
     };
     window.addEventListener("mousedown", closeOutside);
     return () => window.removeEventListener("mousedown", closeOutside);
-  }, []);
+  }, [activeModal]);
 
   return (
     <div className="page">
