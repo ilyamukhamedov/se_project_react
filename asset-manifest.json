@@ -1,0 +1,35 @@
+{
+  "files": {
+    "main.css": "/se_project_react/static/css/main.5c87b49e.css",
+    "main.js": "/se_project_react/static/js/main.dd08620a.js",
+    "static/js/787.aec36e2a.chunk.js": "/se_project_react/static/js/787.aec36e2a.chunk.js",
+    "static/media/Avatar.svg": "/se_project_react/static/media/Avatar.854041bda88eabe69eb8648fa415f560.svg",
+    "static/media/CabinetGrotesk-Bold.woff": "/se_project_react/static/media/CabinetGrotesk-Bold.0fb1cbec860aa3537c32.woff",
+    "static/media/CabinetGrotesk-Medium.woff": "/se_project_react/static/media/CabinetGrotesk-Medium.1928499875b5b3682ea5.woff",
+    "static/media/CabinetGrotesk-Bold.woff2": "/se_project_react/static/media/CabinetGrotesk-Bold.c9c3bc30c44ade9d3b9b.woff2",
+    "static/media/CabinetGrotesk-Medium.woff2": "/se_project_react/static/media/CabinetGrotesk-Medium.467bcdaa2530ea758403.woff2",
+    "static/media/snowDay.svg": "/se_project_react/static/media/snowDay.a5bb7441280cef64ae081acadb7d6e66.svg",
+    "static/media/snowNight.svg": "/se_project_react/static/media/snowNight.20a89d711249712380ea9f4269b386a3.svg",
+    "static/media/stormDay.svg": "/se_project_react/static/media/stormDay.51c68e175fd385c6055462b91d462bd5.svg",
+    "static/media/stormNight.svg": "/se_project_react/static/media/stormNight.b98983c750d3f283a9267efc3c3fd940.svg",
+    "static/media/rainDay.svg": "/se_project_react/static/media/rainDay.8fd968acf8cb57624e2a990b324c1278.svg",
+    "static/media/rainNight.svg": "/se_project_react/static/media/rainNight.ebe0301b9856c6c8564df5c8beea1ac8.svg",
+    "static/media/fogDay.svg": "/se_project_react/static/media/fogDay.8ad4efe699a8e3a16ae0220f3b5a3d48.svg",
+    "static/media/fogNight.svg": "/se_project_react/static/media/fogNight.cee462810b2a7c8696b7701170241a66.svg",
+    "static/media/Logo.svg": "/se_project_react/static/media/Logo.2e52a3b54443b649938df0a9b3d231e2.svg",
+    "static/media/likeButton.svg": "/se_project_react/static/media/likeButton.f4bdf58cb3d62f45d3a1.svg",
+    "static/media/cloudyNight.svg": "/se_project_react/static/media/cloudyNight.c52565b10982a97a5a67275442bd12ee.svg",
+    "static/media/cloudyDay.svg": "/se_project_react/static/media/cloudyDay.a82afca00153882581ccd5beb4ae2557.svg",
+    "static/media/close.svg": "/se_project_react/static/media/close.1339af7046245121f6e9.svg",
+    "index.html": "/se_project_react/index.html",
+    "static/media/moonNight.svg": "/se_project_react/static/media/moonNight.ae0e6bbe1e0bfc883f3ba207396bf3b4.svg",
+    "static/media/sunnyDay.svg": "/se_project_react/static/media/sunnyDay.1c3ffd02d92146a2673939be89b88d54.svg",
+    "main.5c87b49e.css.map": "/se_project_react/static/css/main.5c87b49e.css.map",
+    "main.dd08620a.js.map": "/se_project_react/static/js/main.dd08620a.js.map",
+    "787.aec36e2a.chunk.js.map": "/se_project_react/static/js/787.aec36e2a.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.5c87b49e.css",
+    "static/js/main.dd08620a.js"
+  ]
+}
