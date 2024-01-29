@@ -1,0 +1,29 @@
+.item__image {
+  width: 496px;
+  max-height: 496px;
+}
+
+.item__modal {
+  overflow: hidden;
+  padding: 0;
+}
+
+.item__name {
+  color: #000;
+  font-family: "Cabinet Grotesk", sans-serif;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 24px;
+  margin: 20px 0 12px 32px;
+}
+
+.item__weather {
+  color: #000;
+  font-family: "Cabinet Grotesk", sans-serif;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 24px;
+  margin: 0 0 32px 32px;
+}
