@@ -23,3 +23,4 @@ https://kreker911.github.io/se_project_react/
 - Resonsive design
 - Smooth closing modals
 - Change default card image design
+- Add current location in header
