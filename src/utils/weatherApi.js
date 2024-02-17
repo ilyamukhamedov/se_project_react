@@ -19,16 +19,26 @@ export const parseWeatherData = (data) => {
   }
 
   const weather = {};
+
   weather.city = data.name;
-  weather.temp = Math.ceil(data.main.temp);
+  // weather.temp = Math.ceil(data.main.temp);
+  weather.temp = {
+    F: Math.round(data.main.temp),
+    C: Math.round(((data.main.temp - 32) * 5) / 9),
+  };
   weather.type = data.weather[0].main;
+
   const currentTime = Date.now();
+
   const day = data.sys.sunrise * 1000;
+
   const night = data.sys.sunset * 1000;
+
   if (currentTime >= day && currentTime < night) {
     weather.day = true;
   } else {
     weather.day = false;
   }
+
   return weather;
 };

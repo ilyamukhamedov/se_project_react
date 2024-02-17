@@ -1,9 +1,18 @@
 .item__image {
-  width: 496px;
-  max-height: 496px;
+  width: 498px;
+  height: 498px;
+  margin: auto;
 }
 
 .item__modal {
+  align-items: center;
+  width: 498px;
+  height: 610px;
+  border-radius: 20px;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  box-shadow: 0px 0px 25px 0px rgba(0, 0, 0, 0.15);
+  background: #fff;
+  position: relative;
   overflow: hidden;
   padding: 0;
 }
@@ -26,4 +35,24 @@
   font-weight: 700;
   line-height: 24px;
   margin: 0 0 32px 32px;
+}
+
+.item__delete-button {
+  font-family: "Cabinet Grotesk", sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 24px;
+  letter-spacing: 0em;
+  text-align: left;
+  color: #ff4d00;
+  border: none;
+  background: transparent;
+  position: absolute;
+  top: 518px;
+  left: 365px;
+  transition: 0.2s ease;
+}
+
+.item__delete-button:hover {
+  transform: scale(1.1, 1.1);
 }

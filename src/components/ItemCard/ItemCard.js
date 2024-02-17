@@ -6,13 +6,14 @@ const ItemCard = ({ card, onSelectCard }) => {
       <div>
         <img
           className="card__image"
-          src={card.link}
+          src={card.imageUrl}
           alt={card.name}
           onClick={() => onSelectCard(card)}
         />
       </div>
       <div className="card__name">
-        {card.name} <button className="card__like-button" />
+        {card.name}
+        {/* <button className="card__like-button" /> */}
       </div>
     </div>
   );

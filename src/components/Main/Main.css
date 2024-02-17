@@ -4,8 +4,26 @@
   margin: auto;
 }
 
-.card__section {
+.main__title {
+  color: #000;
+  font-family: "Cabinet Grotesk", sans-serif;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  margin-bottom: 34px;
+  margin-top: 40px;
 }
 
-.card__section-items {
+.main__cards {
+  width: 100%;
+  max-width: 1360px;
+}
+
+.main__items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 17px;
+  padding: 0;
+  margin: 0;
 }

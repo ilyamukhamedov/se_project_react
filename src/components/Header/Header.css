@@ -16,6 +16,12 @@
 
 .header__logo {
   cursor: default;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.header__logo:hover {
+  transform: scale(1.1, 1.1);
 }
 
 .header__date {
@@ -67,6 +73,7 @@
   background: transparent;
   transition: 0.2s ease;
   padding: 8px;
+  cursor: pointer;
 }
 
 .header__add-button:hover {
@@ -80,10 +87,17 @@
   font-style: normal;
   font-weight: 700;
   line-height: normal;
-  cursor: default;
+  cursor: pointer;
+  text-decoration: none;
+  transition: 0.2s ease;
+}
+
+.header__profile-name:hover {
+  opacity: 0.5;
 }
 
 .header__profile-image {
   width: 40px;
   height: 40px;
+  border: 1px solid rgba(0, 0, 0, 0.5) 50%;
 }

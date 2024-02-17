@@ -2,26 +2,26 @@ import "./ModalWithForm.css";
 
 const ModalWithForm = ({
   children,
-  buttonText = "Add garment",
   onClose,
   name,
   title,
+  onSubmit,
+  buttonText = "Add Garment",
 }) => {
   return (
     <div className={`modal modal_type_${name}`}>
-      <div className={`modal__container`}>
+      <div className="modal__container">
         <button
           className="modal__close-button"
           type="button"
           onClick={onClose}
         />
         <h2 className="modal__title">{title}</h2>
-        <form>
+        <form onSubmit={onSubmit}>
           {children}
           <button
-            className="modal__button modal__button_disabled"
+            className="modal__button modal__button-disabled"
             type="submit"
-            disabled
           >
             {buttonText}
           </button>

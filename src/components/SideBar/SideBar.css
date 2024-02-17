@@ -1,0 +1,22 @@
+.side__section {
+  display: flex;
+  gap: 16px;
+  margin: 0;
+}
+
+.side__logo {
+  width: 56px;
+  height: 56px;
+  border: 1px solid rgba(0, 0, 0, 0.5) 50%;
+}
+
+.side__title {
+  color: #000;
+  font-family: "Cabinet Grotesk", sans-serif;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  width: 157px;
+  margin: 16px 0 16px 0;
+}

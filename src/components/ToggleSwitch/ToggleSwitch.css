@@ -1,0 +1,150 @@
+.switch__checkbox {
+  height: 0;
+  width: 0;
+  visibility: hidden;
+}
+
+.switch__label {
+  cursor: pointer;
+  min-width: 52px;
+  height: 24px;
+  border-radius: 20px;
+  border: 2px solid #7e7e7e;
+  background-color: #fff;
+  position: relative;
+  transition: border 0.2s;
+  padding: 0;
+  margin: 0;
+}
+
+.switch__label:hover {
+  border: 2px solid;
+}
+
+.switch__label .switch__button {
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  width: 28px;
+  height: 28px;
+  border-radius: 20px;
+  transition: 0.2s;
+  background: #000;
+}
+
+.switch__label .switch__temp {
+  position: absolute;
+  top: -2px;
+  left: -2px;
+}
+
+.switch__checkbox:checked + .switch__label .switch__button {
+  left: calc(100% + 2px);
+  transform: translateX(-100%);
+}
+
+.switch__label:active .switch__button {
+  width: 35px;
+}
+
+.switch__temp {
+  display: flex;
+  width: 56px;
+  height: 28px;
+}
+
+.switch__temp-type {
+  width: 28px;
+  height: 28px;
+  font-family: "Cabinet Grotesk", sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 17px;
+  letter-spacing: 0em;
+  margin-top: 10px;
+  color: #fff;
+  z-index: 1;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.2s;
+}
+
+.switch__active {
+  color: #7e7e7e;
+}
+
+.switch__temp:hover .switch__active {
+  color: black;
+}
+
+/* 
+.switch {
+  display: flex;
+  position: relative;
+  align-items: center;
+}
+
+.switch__box {
+  border-radius: 25px;
+  border: 2px solid #7e7e7e;
+  width: 56px;
+  height: 28px;
+  appearance: none;
+  transition: border 0.2s;
+}
+
+.switch__box:hover {
+  border: 2px solid;
+}
+
+.switch__slider {
+  border-radius: 20px;
+  height: 28px;
+  width: 28px;
+  background-color: black;
+  color: white;
+  text-align: center;
+  cursor: pointer;
+  position: absolute;
+}
+
+.switch__slider-F {
+  left: 28px;
+}
+
+.switch__slider-C {
+}
+
+.switch__temp-F {
+  position: absolute;
+  left: 10px;
+  font-family: "Cabinet Grotesk", sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 17px;
+  letter-spacing: 0%;
+  text-align: center;
+}
+
+.switch__temp-C {
+  position: absolute;
+  left: 37px;
+
+  font-family: "Cabinet Grotesk", sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 17px;
+  letter-spacing: 0%;
+  text-align: center;
+  color: #7e7e7e;
+}
+
+.switch__temp-C:hover {
+  color: black;
+}
+
+.switch__active {
+  color: white;
+} */
