@@ -14,9 +14,13 @@ import DeleteModal from "../DeleteModal/DeleteModal";
 
 export default function App() {
   const [activeModal, setActiveModal] = useState("");
+
   const [selectedCard, setSelectedCard] = useState({});
+
   const [weather, setWeather] = useState(0);
+
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
+
   const [clothingItems, setClothingItems] = useState([]);
 
   const handleCreateModal = () => {

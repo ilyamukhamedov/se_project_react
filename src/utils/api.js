@@ -1,34 +1,34 @@
 const baseUrl = "http://localhost:3001";
 const headers = { "Content-Type": "application/json" };
 
-const checkResponse = (res) => {
+export function checkResponse(res) {
   if (res.ok) {
     return res.json();
   } else {
     return Promise.reject(`Error: ${res.status}`);
   }
-};
+}
+
+function request(url, options) {
+  return fetch(url, options).then(checkResponse);
+}
 
 export const fetchItems = () => {
-  return fetch(`${baseUrl}/items`, {
+  return request(`${baseUrl}/items`, {
     method: "GET",
     headers: headers,
-  }).then((res) => {
-    return checkResponse(res);
   });
 };
 
 export const removeItems = (cardId) => {
-  return fetch(`${baseUrl}/items/${cardId}`, {
+  return request(`${baseUrl}/items/${cardId}`, {
     method: "DELETE",
     headers: headers,
-  }).then((res) => {
-    return checkResponse(res);
   });
 };
 
 export const loadItems = ({ name, weather, imageUrl }) => {
-  return fetch(`${baseUrl}/items`, {
+  return request(`${baseUrl}/items`, {
     method: "POST",
     headers: headers,
     body: JSON.stringify({
@@ -36,7 +36,5 @@ export const loadItems = ({ name, weather, imageUrl }) => {
       weather: weather,
       imageUrl: imageUrl,
     }),
-  }).then((res) => {
-    return checkResponse(res);
   });
 };

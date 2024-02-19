@@ -12,9 +12,13 @@ This project is the first one where have been used React to build the applicatio
 
 https://www.figma.com/file/DTojSwldenF9UPKQZd6RRb/Sprint-10%3A-WTWR
 
+### GitHub Repository
+
+https://github.com/Kreker911/se_project_react
+
 ### Deployment
 
-The project is deployed and accessible via the following link:
+The project(old version for now) is deployed and accessible via the following link:
 
 https://kreker911.github.io/se_project_react/
 
