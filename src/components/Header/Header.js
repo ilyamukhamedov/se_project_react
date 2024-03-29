@@ -1,16 +1,24 @@
 import "./Header.css";
-import avatarDefault from "../../images/Avatar.svg";
+// import avatarDefault from "../../images/Avatar.svg";
 import logo from "../../images/Logo.svg";
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
+import { useContext } from "react";
+import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
 const currentDate = new Date().toLocaleString("default", {
   month: "long",
   day: "numeric",
 });
 
-const Header = ({ onCreateModal, cityName }) => {
-  const username = "Terrence Tegegne";
+const Header = ({
+  onCreateModal,
+  cityName,
+  onLogInModal,
+  onRegisterModal,
+  isLoggedIn,
+}) => {
+  const currentUser = useContext(CurrentUserContext);
 
   return (
     <header className="header">
@@ -24,33 +32,54 @@ const Header = ({ onCreateModal, cityName }) => {
       </div>
       <div className="header__profile">
         <ToggleSwitch />
-        <div>
-          <button
-            className="header__add-button"
-            type="text"
-            onClick={onCreateModal}
-          >
-            + Add clothes
-          </button>
-        </div>
-        <Link to="/profile" className="header__profile-name">
-          {username}
-        </Link>
-        <div>
-          {avatarDefault ? (
-            <img
-              className="header__profile-image"
-              src={avatarDefault}
-              alt="Avatar logo"
-            />
-          ) : (
-            <div className="header__span-container">
-              <span className="header__span">
-                {username?.toUpperCase().charAt(0) || ""}
-              </span>
+        {isLoggedIn ? (
+          <>
+            <div>
+              <button
+                className="header__button"
+                type="text"
+                onClick={onCreateModal}
+              >
+                + Add clothes
+              </button>
             </div>
-          )}
-        </div>
+            <Link to="/profile" className="header__profile-name">
+              {currentUser?.name}
+            </Link>
+            <div>
+              {currentUser?.avatar ? (
+                <img
+                  className="header__profile-image"
+                  src={currentUser?.avatar}
+                  alt="Avatar logo"
+                />
+              ) : (
+                <div className="header__span-container">
+                  <span className="header__span">
+                    {currentUser?.name.toUpperCase().charAt(0) || ""}
+                  </span>
+                </div>
+              )}
+            </div>
+          </>
+        ) : (
+          <>
+            <button
+              type="button"
+              onClick={onRegisterModal}
+              className="header__button"
+            >
+              Sign Up
+            </button>
+            <button
+              type="button"
+              onClick={onLogInModal}
+              className="header__button"
+            >
+              Log In
+            </button>
+          </>
+        )}
       </div>
     </header>
   );

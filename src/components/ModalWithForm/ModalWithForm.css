@@ -31,6 +31,28 @@
   position: relative;
 }
 
+.modal__link {
+  color: #000;
+  background-color: #fff;
+  opacity: 0.5;
+  font-family: "Cabinet Grotesk", sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 20px;
+  transition: 0.2s ease;
+  border: none;
+  padding: 0;
+  /* margin-left: 12px; */
+  position: absolute;
+  bottom: 44px;
+  left: 118px;
+}
+
+.modal__link:hover {
+  opacity: 1;
+}
+
 .modal__close-button {
   background: transparent url(../../images/close.svg) no-repeat center;
 
@@ -47,6 +69,7 @@
 
 .modal__close-button:hover {
   opacity: 0.6;
+  transform: rotate(90deg);
 }
 
 .modal__title {
@@ -85,6 +108,7 @@
   padding: 0;
   height: 28px;
   margin-top: 8px;
+  max-width: 100%;
 }
 
 input[type="radio"] {
@@ -127,12 +151,12 @@ input[type="radio"] {
   line-height: 20px;
   border-radius: 4px;
   background: #000;
-  width: 124px;
   height: 36px;
   margin: 32px 0 8px;
-  padding: 0;
+  padding: 8px 16px;
   border: none;
   transition: 0.2s ease;
+  cursor: pointer;
 }
 
 .modal__button:hover {

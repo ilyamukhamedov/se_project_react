@@ -34,11 +34,15 @@
   max-height: 325px;
 }
 
-/* .card__like-button {
+.card__like-button {
   margin-left: 20px;
   position: absolute;
   width: 20px;
   height: 17px;
   border: none;
   background: transparent url(../../images/likeButton.svg) no-repeat center;
-} */
+}
+
+.card__like-button_liked {
+  background: url(../../images/likeButtonLiked.svg) no-repeat center;
+}

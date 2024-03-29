@@ -19,6 +19,7 @@ const ModalWithForm = ({
         <h2 className="modal__title">{title}</h2>
         <form onSubmit={onSubmit}>
           {children}
+
           <button
             className="modal__button modal__button-disabled"
             type="submit"

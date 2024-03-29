@@ -1,5 +1,4 @@
-const baseUrl = "http://localhost:3001";
-const headers = { "Content-Type": "application/json" };
+export const baseUrl = "http://localhost:3001";
 
 export function checkResponse(res) {
   if (res.ok) {
@@ -9,32 +8,66 @@ export function checkResponse(res) {
   }
 }
 
-function request(url, options) {
+export function request(url, options) {
   return fetch(url, options).then(checkResponse);
 }
 
 export const fetchItems = () => {
+  const jwt = localStorage.getItem("jwt");
   return request(`${baseUrl}/items`, {
     method: "GET",
-    headers: headers,
+    headers: {
+      "Content-Type": "application/json",
+      authorization: `Bearer ${jwt}`,
+    },
   });
 };
 
 export const removeItems = (cardId) => {
+  const jwt = localStorage.getItem("jwt");
   return request(`${baseUrl}/items/${cardId}`, {
     method: "DELETE",
-    headers: headers,
+    headers: {
+      "Content-Type": "application/json",
+      authorization: `Bearer ${jwt}`,
+    },
   });
 };
 
 export const loadItems = ({ name, weather, imageUrl }) => {
+  const jwt = localStorage.getItem("jwt");
   return request(`${baseUrl}/items`, {
     method: "POST",
-    headers: headers,
+    headers: {
+      "Content-Type": "application/json",
+      authorization: `Bearer ${jwt}`,
+    },
     body: JSON.stringify({
       name: name,
       weather: weather,
       imageUrl: imageUrl,
     }),
+  });
+};
+
+export const likeCard = (cardId) => {
+  const jwt = localStorage.getItem("jwt");
+  return request(`${baseUrl}/items/${cardId}/likes`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      authorization: `Bearer ${jwt}`,
+    },
+  });
+};
+
+export const dislikeCard = (cardId) => {
+  const jwt = localStorage.getItem("jwt");
+  return request(`${baseUrl}/items/${cardId}/likes`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+      authorization: `Bearer ${jwt}`,
+    },
   });
 };

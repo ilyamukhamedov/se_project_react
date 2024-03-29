@@ -62,7 +62,7 @@
   border-radius: 50%;
 }
 
-.header__add-button {
+.header__button {
   color: #000;
   font-family: "Cabinet Grotesk", sans-serif;
   font-size: 20px;
@@ -72,11 +72,12 @@
   border: none;
   background: transparent;
   transition: 0.2s ease;
-  padding: 8px;
+  padding: 0;
+  /* padding: 8px; */
   cursor: pointer;
 }
 
-.header__add-button:hover {
+.header__button:hover {
   opacity: 0.5;
 }
 
