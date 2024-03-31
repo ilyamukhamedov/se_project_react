@@ -44,20 +44,20 @@ const Header = ({
               </button>
             </div>
             <Link to="/profile" className="header__profile-name">
-              {console.log(currentUser)}
-              {currentUser[0].name}
+              {console.log(currentUser.name)}
+              {currentUser.name}
             </Link>
             <div>
               {currentUser.avatar ? (
                 <img
                   className="header__profile-image"
-                  src={currentUser.currentUser.avatar}
+                  src={currentUser.avatar}
                   alt="Avatar logo"
                 />
               ) : (
                 <div className="header__span-container">
                   <span className="header__span">
-                    {currentUser.currentUser.name.toUpperCase().charAt(0) || ""}
+                    {currentUser.name.toUpperCase().charAt(0) || ""}
                   </span>
                 </div>
               )}

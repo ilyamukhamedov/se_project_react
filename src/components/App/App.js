@@ -120,7 +120,6 @@ export default function App() {
   const loginUser = (user) => {
     return signIn(user)
       .then((res) => {
-        console.log(res);
         checkloggedIn(res.token);
         setToken(res.token);
         localStorage.setItem("jwt", res.token);
@@ -133,7 +132,6 @@ export default function App() {
   };
 
   const registerUser = (data) => {
-    console.log(data);
     signUp(data)
       .then(() => {
         loginUser(data);
@@ -252,7 +250,7 @@ export default function App() {
   }, [loggedIn, token]);
 
   return (
-    <CurrentUserContext.Provider value={{ currentUser }}>
+    <CurrentUserContext.Provider value={currentUser}>
       <div className="page">
         <CurrentTemperatureUnitContext.Provider
           value={{ currentTemperatureUnit, handleToggleSwitchChange }}
