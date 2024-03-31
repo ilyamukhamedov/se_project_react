@@ -8,7 +8,7 @@ const Profile = ({
   clothingItems,
   logout,
   editProfile,
-  isloggedIn,
+  loggedIn,
   handleCardLike,
 }) => (
   <section className="profile__content">
@@ -17,7 +17,6 @@ const Profile = ({
       onSelectCard={onSelectCard}
       onCreateModal={onCreateModal}
       clothingItems={clothingItems}
-      isloggedIn={isloggedIn}
       handleCardLike={handleCardLike}
     />
   </section>

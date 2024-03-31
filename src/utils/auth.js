@@ -4,7 +4,6 @@ const headers = {
 };
 
 export const signUp = ({ name, avatar, email, password }) => {
-  console.log("signUp", { name, avatar, email, password });
   return request(`${baseUrl}/signup`, {
     method: "POST",
     headers: headers,
@@ -24,6 +23,7 @@ export const update = ({ name, avatar }, token) => {
   return request(`${baseUrl}/users/me`, {
     method: "PATCH",
     headers: {
+      Accept: "application/json",
       "Content-Type": "application/json",
       authorization: `Bearer ${token}`,
     },

@@ -1,13 +1,12 @@
 import "./ClothesSection.css";
 import ItemCard from "../ItemCard/ItemCard";
-import { CurrentUserContext } from "../../contexts/CurrentUserContext";
+import CurrentUserContext from "../../contexts/CurrentUserContext";
 import { useContext, React } from "react";
 
 const ClothesSection = ({
   onSelectCard,
   onCreateModal,
   clothingItems,
-  isloggedIn,
   handleCardLike,
 }) => {
   const currentUser = useContext(CurrentUserContext);
@@ -29,7 +28,6 @@ const ClothesSection = ({
                 key={item._id}
                 card={item}
                 onSelectCard={onSelectCard}
-                isloggedIn={isloggedIn}
                 handleCardLike={handleCardLike}
               />
             );

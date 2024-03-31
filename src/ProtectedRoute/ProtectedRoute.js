@@ -1,9 +1,9 @@
 import React from "react";
 import { Route, Redirect } from "react-router-dom";
 
-function ProtectedRoute({ children, isLoggedIn, ...props }) {
+function ProtectedRoute({ children, loggedIn, ...props }) {
   return (
-    <Route {...props}>{isLoggedIn ? children : <Redirect to={"/"} />}</Route>
+    <Route {...props}>{loggedIn ? children : <Redirect to={"/"} />}</Route>
   );
 }
 

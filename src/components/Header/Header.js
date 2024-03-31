@@ -4,7 +4,7 @@ import logo from "../../images/Logo.svg";
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
 import { useContext } from "react";
-import { CurrentUserContext } from "../../contexts/CurrentUserContext";
+import CurrentUserContext from "../../contexts/CurrentUserContext";
 
 const currentDate = new Date().toLocaleString("default", {
   month: "long",
@@ -16,7 +16,7 @@ const Header = ({
   cityName,
   onLogInModal,
   onRegisterModal,
-  isLoggedIn,
+  loggedIn,
 }) => {
   const currentUser = useContext(CurrentUserContext);
 
@@ -32,7 +32,7 @@ const Header = ({
       </div>
       <div className="header__profile">
         <ToggleSwitch />
-        {isLoggedIn ? (
+        {loggedIn ? (
           <>
             <div>
               <button
@@ -44,19 +44,20 @@ const Header = ({
               </button>
             </div>
             <Link to="/profile" className="header__profile-name">
-              {currentUser?.name}
+              {console.log(currentUser)}
+              {currentUser[0].name}
             </Link>
             <div>
-              {currentUser?.avatar ? (
+              {currentUser.avatar ? (
                 <img
                   className="header__profile-image"
-                  src={currentUser?.avatar}
+                  src={currentUser.currentUser.avatar}
                   alt="Avatar logo"
                 />
               ) : (
                 <div className="header__span-container">
                   <span className="header__span">
-                    {currentUser?.name.toUpperCase().charAt(0) || ""}
+                    {currentUser.currentUser.name.toUpperCase().charAt(0) || ""}
                   </span>
                 </div>
               )}

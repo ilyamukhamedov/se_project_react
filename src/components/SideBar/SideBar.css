@@ -25,42 +25,11 @@
   margin: 16px 0 16px 16px;
 }
 
-.side__edit-profile {
-  color: #000;
-  font-family: "Cabinet Grotesk", sans-serif;
-  font-size: 20px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: normal;
-  width: 175px;
-  margin: 24px 0 8px 0;
-  transition: 0.2s ease;
-}
-
-.side__edit-profile:hover {
-  opacity: 0.6;
-  cursor: pointer;
-}
-
-.side__logout {
-  color: #000;
-  font-family: "Cabinet Grotesk", sans-serif;
-  font-size: 20px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: normal;
-  width: 65px;
-  margin: 0;
-  transition: 0.2s ease;
-}
-
 .side__options-container {
   display: flex;
   gap: 8px;
   flex-direction: column;
-  justify-content: flex-start;
-  align-content: flex-start;
-  align-items: start;
+  align-items: flex-start;
   margin-top: 24px;
 }
 
@@ -75,6 +44,7 @@
   margin: 0;
   transition: 0.2s ease;
   border: none;
+  background-color: #f3f3f3;
 }
 
 .side__button:hover {

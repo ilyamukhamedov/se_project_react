@@ -7,17 +7,25 @@ const RegisterModal = ({ handleCloseModal, registerUser, openLogInModal }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleNameChange = (e) => setName(e.target.value);
+  const handleNameChange = (e) => {
+    setName(e.target.value);
+  };
 
-  const handleUrlChange = (e) => setUrl(e.target.value);
+  const handleUrlChange = (e) => {
+    setUrl(e.target.value);
+  };
 
-  const handleEmailChange = (e) => setEmail(e.target.value);
+  const handleEmailChange = (e) => {
+    setEmail(e.target.value);
+  };
 
-  const handlePasswordChange = (e) => setPassword(e.target.value);
+  const handlePasswordChange = (e) => {
+    setPassword(e.target.value);
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    registerUser({ email, password, name, avatar });
+    registerUser({ name, avatar, email, password });
   };
 
   return (

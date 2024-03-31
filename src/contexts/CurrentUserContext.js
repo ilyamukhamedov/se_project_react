@@ -5,4 +5,4 @@ const CurrentUserContext = React.createContext({
   avatar: "",
 });
 
-export { CurrentUserContext };
+export default CurrentUserContext;

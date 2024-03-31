@@ -1,6 +1,6 @@
 import "./SideBar.css";
 // import avatarDefault from "../../images/Avatar.svg";
-import { CurrentUserContext } from "../../contexts/CurrentUserContext";
+import CurrentUserContext from "../../contexts/CurrentUserContext";
 import { useContext, React } from "react";
 
 const SideBar = ({ editProfile, logout }) => {

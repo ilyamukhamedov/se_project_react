@@ -1,6 +1,6 @@
 import "./App.css";
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
-import { CurrentUserContext } from "../../contexts/CurrentUserContext";
+import CurrentUserContext from "../../contexts/CurrentUserContext";
 import Header from "../Header/Header";
 import Main from "../Main/Main";
 import Footer from "../Footer/Footer";
@@ -39,11 +39,13 @@ export default function App() {
 
   const [clothingItems, setClothingItems] = useState([]);
 
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [loggedIn, setLoggedIn] = useState(false);
 
   const [currentUser, setCurrentUser] = useState({});
 
   const [isLiked, setIsLiked] = useState(false);
+
+  const [token, setToken] = useState(localStorage.getItem("jwt") || "");
 
   const history = useHistory("");
 
@@ -83,7 +85,7 @@ export default function App() {
   };
 
   const handleAddItemSubmit = (values) => {
-    loadItems(values)
+    loadItems(values, token)
       .then((data) => {
         setClothingItems([data, ...clothingItems]);
       })
@@ -94,7 +96,7 @@ export default function App() {
   };
 
   const handleDeleteCard = (cardId) => {
-    removeItems(cardId)
+    removeItems(cardId, token)
       .then(() => {
         setClothingItems(clothingItems.filter((card) => card._id !== cardId));
       })
@@ -104,12 +106,11 @@ export default function App() {
       });
   };
 
-  function checkLoggedIn() {
-    const jwt = localStorage.getItem("jwt");
-    return checkToken(jwt)
+  function checkloggedIn(token) {
+    return checkToken(token)
       .then((res) => {
-        setIsLoggedIn(true);
-        setCurrentUser(res.user);
+        setLoggedIn(true);
+        setCurrentUser(res);
       })
       .catch((err) => {
         console.error(err);
@@ -117,22 +118,26 @@ export default function App() {
   }
 
   const loginUser = (user) => {
-    signIn(user)
+    return signIn(user)
       .then((res) => {
+        console.log(res);
+        checkloggedIn(res.token);
+        setToken(res.token);
         localStorage.setItem("jwt", res.token);
-
-        return checkLoggedIn(res.user);
+        handleCloseModal();
+        history.push("/profile");
       })
-      .then(handleCloseModal)
       .catch((err) => {
         console.error(err);
       });
   };
 
   const registerUser = (data) => {
+    console.log(data);
     signUp(data)
-      .then((user) => {
-        loginUser(user);
+      .then(() => {
+        loginUser(data);
+        setCurrentUser(data);
       })
       .catch((err) => {
         console.error(err);
@@ -140,8 +145,7 @@ export default function App() {
   };
 
   const updateUser = (user) => {
-    const jwt = localStorage.getItem("jwt");
-    update(user, jwt)
+    update(user, token)
       .then((res) => setCurrentUser(res))
       .then(handleCloseModal)
       .catch((err) => {
@@ -154,17 +158,17 @@ export default function App() {
 
     setCurrentUser({});
 
-    setIsLoggedIn(false);
+    setLoggedIn(false);
 
     history.push("/");
   };
 
   const handleCardLike = (id, isLiked) => {
     if (!isLiked) {
-      likeCard(id)
+      likeCard(id, token)
         .then((updatedCard) => {
           setClothingItems((cards) =>
-            cards.map((card) => (card._id === id ? updatedCard : card))
+            cards.map((card) => (card._id === id ? updatedCard.data : card))
           );
           setIsLiked(true);
         })
@@ -172,10 +176,10 @@ export default function App() {
           console.error(err);
         });
     } else {
-      dislikeCard(id)
+      dislikeCard(id, token)
         .then((updatedCard) => {
           setClothingItems((cards) =>
-            cards.map((card) => (card._id === id ? updatedCard : card))
+            cards.map((card) => (card._id === id ? updatedCard.data : card))
           );
           setIsLiked(false);
         })
@@ -186,14 +190,14 @@ export default function App() {
   };
 
   useEffect(() => {
-    fetchItems().then(setClothingItems).catch(console.error);
+    fetchItems(token).then(setClothingItems).catch(console.error);
 
     getForecastWeather()
       .then((data) => {
         setWeather(parseWeatherData(data));
       })
       .catch(console.error);
-  }, []);
+  }, [token]);
 
   useEffect(() => {
     if (!activeModal) return;
@@ -224,13 +228,13 @@ export default function App() {
   }, [activeModal]);
 
   useEffect(() => {
-    const jwt = localStorage.getItem("jwt");
-    if (jwt) {
-      checkLoggedIn(jwt)
+    if (token) {
+      checkloggedIn(token)
         .then(() => {
-          getUser(jwt)
+          setToken(token);
+          getUser(token)
             .then((res) => {
-              setCurrentUser(res.user);
+              setCurrentUser(res.data);
             })
             .catch((err) => {
               if (err.response && err.response.status === 401) {
@@ -245,10 +249,10 @@ export default function App() {
           console.error(err);
         });
     }
-  }, [isLoggedIn]);
+  }, [loggedIn, token]);
 
   return (
-    <CurrentUserContext.Provider value={currentUser}>
+    <CurrentUserContext.Provider value={{ currentUser }}>
       <div className="page">
         <CurrentTemperatureUnitContext.Provider
           value={{ currentTemperatureUnit, handleToggleSwitchChange }}
@@ -259,7 +263,7 @@ export default function App() {
               onCreateModal={handleCreateModal}
               onLogInModal={handleLogInModal}
               onRegisterModal={handleRegisterModal}
-              isLoggedIn={isLoggedIn}
+              loggedIn={loggedIn}
             />
             <Switch>
               <Route exact path="/">
@@ -270,14 +274,14 @@ export default function App() {
                   handleCardLike={handleCardLike}
                 />
               </Route>
-              <ProtectedRoute path="/profile" isLoggedIn={isLoggedIn}>
+              <ProtectedRoute path="/profile" loggedIn={loggedIn}>
                 <Profile
                   onSelectCard={handleSelectedCard}
                   onCreateModal={handleCreateModal}
                   clothingItems={clothingItems}
                   logout={logoutUser}
                   editProfile={handleEditProfileModal}
-                  isloggedIn={isLoggedIn}
+                  loggedIn={loggedIn}
                   handleCardLike={handleCardLike}
                 />
               </ProtectedRoute>
@@ -295,6 +299,7 @@ export default function App() {
               selectedCard={selectedCard}
               onClose={handleCloseModal}
               handleDeleteCard={handleConfirmModal}
+              loggedIn={loggedIn}
             />
           )}
           {activeModal === "confirm" && (
