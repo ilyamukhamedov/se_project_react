@@ -11,7 +11,9 @@
 .side__logo {
   width: 56px;
   height: 56px;
-  border: 1px solid rgba(0, 0, 0, 0.5) 50%;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  border-radius: 50%;
+  object-fit: cover;
 }
 
 .side__title {
@@ -21,7 +23,7 @@
   font-style: normal;
   font-weight: 700;
   line-height: normal;
-  width: 157px;
+  width: 180px;
   margin: 16px 0 16px 16px;
 }
 

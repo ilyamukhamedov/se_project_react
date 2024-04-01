@@ -21,7 +21,7 @@ import {
   likeCard,
   dislikeCard,
 } from "../../utils/api";
-import { signUp, signIn, update, getUser, checkToken } from "../../utils/auth";
+import { signUp, signIn, update, getUser } from "../../utils/auth";
 import DeleteModal from "../DeleteModal/DeleteModal";
 import LoginModal from "../LoginModal/LoginModal";
 import RegisterModal from "../RegisterModal/RegisterModal";
@@ -44,8 +44,6 @@ export default function App() {
   const [currentUser, setCurrentUser] = useState({});
 
   const [isLiked, setIsLiked] = useState(false);
-
-  const [token, setToken] = useState(localStorage.getItem("jwt") || "");
 
   const history = useHistory("");
 
@@ -85,7 +83,7 @@ export default function App() {
   };
 
   const handleAddItemSubmit = (values) => {
-    loadItems(values, token)
+    loadItems(values)
       .then((data) => {
         setClothingItems([data, ...clothingItems]);
       })
@@ -96,7 +94,7 @@ export default function App() {
   };
 
   const handleDeleteCard = (cardId) => {
-    removeItems(cardId, token)
+    removeItems(cardId)
       .then(() => {
         setClothingItems(clothingItems.filter((card) => card._id !== cardId));
       })
@@ -106,8 +104,9 @@ export default function App() {
       });
   };
 
-  function checkloggedIn(token) {
-    return checkToken(token)
+  function checkloggedIn() {
+    const jwt = localStorage.getItem("jwt");
+    return getUser(jwt)
       .then((res) => {
         setLoggedIn(true);
         setCurrentUser(res);
@@ -118,14 +117,13 @@ export default function App() {
   }
 
   const loginUser = (user) => {
-    return signIn(user)
+    signIn(user)
       .then((res) => {
-        checkloggedIn(res.token);
-        setToken(res.token);
         localStorage.setItem("jwt", res.token);
-        handleCloseModal();
-        history.push("/profile");
+
+        return checkloggedIn();
       })
+      .then(handleCloseModal)
       .catch((err) => {
         console.error(err);
       });
@@ -143,8 +141,11 @@ export default function App() {
   };
 
   const updateUser = (user) => {
-    update(user, token)
-      .then((res) => setCurrentUser(res))
+    const jwt = localStorage.getItem("jwt");
+    update(user, jwt)
+      .then((res) => {
+        setCurrentUser(res);
+      })
       .then(handleCloseModal)
       .catch((err) => {
         console.error(err);
@@ -163,10 +164,10 @@ export default function App() {
 
   const handleCardLike = (id, isLiked) => {
     if (!isLiked) {
-      likeCard(id, token)
+      likeCard(id)
         .then((updatedCard) => {
           setClothingItems((cards) =>
-            cards.map((card) => (card._id === id ? updatedCard.data : card))
+            cards.map((card) => (card._id === id ? updatedCard : card))
           );
           setIsLiked(true);
         })
@@ -174,10 +175,10 @@ export default function App() {
           console.error(err);
         });
     } else {
-      dislikeCard(id, token)
+      dislikeCard(id)
         .then((updatedCard) => {
           setClothingItems((cards) =>
-            cards.map((card) => (card._id === id ? updatedCard.data : card))
+            cards.map((card) => (card._id === id ? updatedCard : card))
           );
           setIsLiked(false);
         })
@@ -188,14 +189,14 @@ export default function App() {
   };
 
   useEffect(() => {
-    fetchItems(token).then(setClothingItems).catch(console.error);
+    fetchItems().then(setClothingItems).catch(console.error);
 
     getForecastWeather()
       .then((data) => {
         setWeather(parseWeatherData(data));
       })
       .catch(console.error);
-  }, [token]);
+  }, []);
 
   useEffect(() => {
     if (!activeModal) return;
@@ -206,48 +207,35 @@ export default function App() {
       }
     };
 
-    document.addEventListener("keydown", handleEscClose);
-
-    return () => {
-      document.removeEventListener("keydown", handleEscClose);
-    };
-  }, [activeModal]);
-
-  useEffect(() => {
-    if (!activeModal) return;
-
     const closeOutside = (e) => {
       if (e.target.classList.contains("modal")) {
         handleCloseModal();
       }
     };
+
     window.addEventListener("mousedown", closeOutside);
-    return () => window.removeEventListener("mousedown", closeOutside);
+
+    document.addEventListener("keydown", handleEscClose);
+
+    return () => {
+      document.removeEventListener("keydown", handleEscClose);
+      window.removeEventListener("mousedown", closeOutside);
+    };
   }, [activeModal]);
 
   useEffect(() => {
-    if (token) {
-      checkloggedIn(token)
-        .then(() => {
-          setToken(token);
-          getUser(token)
-            .then((res) => {
-              setCurrentUser(res.data);
-            })
-            .catch((err) => {
-              if (err.response && err.response.status === 401) {
-                console.error("Token expired or invalid. Logging out...");
-                logoutUser();
-              } else {
-                console.error("Error fetching user data:", err);
-              }
-            });
-        })
-        .catch((err) => {
-          console.error(err);
-        });
+    const jwt = localStorage.getItem("jwt");
+    if (jwt) {
+      checkloggedIn(jwt).catch((err) => {
+        if (err.response && err.response.status === 401) {
+          console.error("Token expired or invalid. Logging out...");
+          logoutUser();
+        } else {
+          console.error("Error fetching user data:", err);
+        }
+      });
     }
-  }, [loggedIn, token]);
+  }, []);
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
@@ -261,6 +249,7 @@ export default function App() {
               onCreateModal={handleCreateModal}
               onLogInModal={handleLogInModal}
               onRegisterModal={handleRegisterModal}
+              isOpen={activeModal}
               loggedIn={loggedIn}
             />
             <Switch>

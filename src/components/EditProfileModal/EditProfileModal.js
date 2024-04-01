@@ -30,7 +30,7 @@ const EditProfileModal = ({ handleCloseModal, updateUser }) => {
       title="Change profile data"
       onClose={handleCloseModal}
       onSubmit={onSubmit}
-      buttontext="Save changes"
+      buttonText="Save changes"
     >
       <label className="modal__label">
         Name *

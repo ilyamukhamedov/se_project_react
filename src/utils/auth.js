@@ -40,13 +40,3 @@ export const getUser = (token) => {
     },
   });
 };
-
-export const checkToken = (token) => {
-  return request(`${baseUrl}/users/me`, {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-      authorization: `Bearer ${token}`,
-    },
-  });
-};

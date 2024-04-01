@@ -17,6 +17,7 @@ const Header = ({
   onLogInModal,
   onRegisterModal,
   loggedIn,
+  isOpen
 }) => {
   const currentUser = useContext(CurrentUserContext);
 
@@ -31,7 +32,7 @@ const Header = ({
         </div>
       </div>
       <div className="header__profile">
-        <ToggleSwitch />
+        <ToggleSwitch isOpen={isOpen} />
         {loggedIn ? (
           <>
             <div>
@@ -44,11 +45,10 @@ const Header = ({
               </button>
             </div>
             <Link to="/profile" className="header__profile-name">
-              {console.log(currentUser.name)}
               {currentUser.name}
             </Link>
             <div>
-              {currentUser.avatar ? (
+              {currentUser ? (
                 <img
                   className="header__profile-image"
                   src={currentUser.avatar}

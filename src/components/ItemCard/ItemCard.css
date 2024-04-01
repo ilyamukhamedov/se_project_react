@@ -4,7 +4,8 @@
   border-radius: 19px;
   border: 1px solid rgba(0, 0, 0, 0.3);
   background: #e9e9e9;
-  transition: 0.2s ease;
+  transition: 0.6s ease;
+  object-fit: cover;
 }
 
 .card__image:hover {
@@ -38,9 +39,10 @@
   margin-left: 20px;
   position: absolute;
   width: 20px;
-  height: 17px;
+  height: 20px;
   border: none;
   background: transparent url(../../images/likeButton.svg) no-repeat center;
+  transition: 0.2s ease;
 }
 
 .card__like-button_liked {
