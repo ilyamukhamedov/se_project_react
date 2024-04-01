@@ -1,14 +1,9 @@
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import { useState, React } from "react";
 
-const LoginModal = ({
-  handleCloseModal,
-  loginUser,
-  openRegisterModal,
-  //   openLogInModal,
-  //   isOpen,
-}) => {
+const LoginModal = ({ handleCloseModal, loginUser, openRegisterModal }) => {
   const [email, setEmail] = useState("");
+
   const [password, setPassword] = useState("");
 
   const handleEmailChange = (e) => setEmail(e.target.value);
