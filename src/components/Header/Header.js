@@ -17,7 +17,7 @@ const Header = ({
   onLogInModal,
   onRegisterModal,
   loggedIn,
-  isOpen
+  isOpen,
 }) => {
   const currentUser = useContext(CurrentUserContext);
 
@@ -48,7 +48,7 @@ const Header = ({
               {currentUser.name}
             </Link>
             <div>
-              {currentUser ? (
+              {currentUser.avatar.length > 20 ? (
                 <img
                   className="header__profile-image"
                   src={currentUser.avatar}

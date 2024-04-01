@@ -53,3 +53,26 @@
   opacity: 0.6;
   cursor: pointer;
 }
+
+.side__span-container {
+  width: 56px;
+  height: 56px;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 50%;
+}
+
+.side__span {
+  color: #fff;
+  text-align: center;
+  font-family: "Cabinet Grotesk", sans-serif;
+  font-size: 28px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  display: flex;
+  width: 56px;
+  height: 56px;
+  flex-direction: column;
+  justify-content: center;
+}
