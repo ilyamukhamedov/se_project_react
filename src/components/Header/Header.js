@@ -16,7 +16,6 @@ const Header = ({
   onLogInModal,
   onRegisterModal,
   loggedIn,
-  isOpen,
 }) => {
   const currentUser = useContext(CurrentUserContext);
 
@@ -31,7 +30,7 @@ const Header = ({
         </div>
       </div>
       <div className="header__profile">
-        <ToggleSwitch isOpen={isOpen} />
+        <ToggleSwitch />
         {loggedIn ? (
           <>
             <div>

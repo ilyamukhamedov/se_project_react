@@ -249,7 +249,6 @@ export default function App() {
               onCreateModal={handleCreateModal}
               onLogInModal={handleLogInModal}
               onRegisterModal={handleRegisterModal}
-              isOpen={activeModal}
               loggedIn={loggedIn}
             />
             <Switch>

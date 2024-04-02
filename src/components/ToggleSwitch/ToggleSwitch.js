@@ -2,7 +2,7 @@ import { useState, useEffect, useContext } from "react";
 import "./ToggleSwitch.css";
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
 
-const ToggleSwitch = ({ isOpen }) => {
+const ToggleSwitch = () => {
   const { currentTemperatureUnit, handleToggleSwitchChange } = useContext(
     CurrentTemperatureUnitContext
   );
@@ -27,16 +27,10 @@ const ToggleSwitch = ({ isOpen }) => {
       <label className="switch__label" htmlFor={`switch`}>
         <span className="switch__button" />
         <div className="switch__temp">
-          <p
-            style={isOpen !== "" ? { filter: "blur(4px)" } : null}
-            className={`switch__temp-type ${isChecked && "switch__active"}`}
-          >
+          <p className={`switch__temp-type ${isChecked && "switch__active"}`}>
             F
           </p>
-          <p
-            style={isOpen !== "" ? { filter: "blur(4px)" } : null}
-            className={`switch__temp-type ${!isChecked && "switch__active"}`}
-          >
+          <p className={`switch__temp-type ${!isChecked && "switch__active"}`}>
             C
           </p>
         </div>
