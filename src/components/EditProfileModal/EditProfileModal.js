@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
 
-const EditProfileModal = ({ handleCloseModal, updateUser }) => {
+const EditProfileModal = ({ handleCloseModal, updateUser, isLoading }) => {
   const currentUser = useContext(CurrentUserContext);
   const [name, setName] = useState("");
   const [avatar, setUrl] = useState("");
@@ -30,7 +30,6 @@ const EditProfileModal = ({ handleCloseModal, updateUser }) => {
       title="Change profile data"
       onClose={handleCloseModal}
       onSubmit={onSubmit}
-      buttonText="Save changes"
     >
       <label className="modal__label">
         Name *
@@ -59,6 +58,9 @@ const EditProfileModal = ({ handleCloseModal, updateUser }) => {
           onChange={handleUrlChange}
         />
       </label>
+      <button className="modal__button modal__button-disabled" type="submit">
+        {isLoading ? "Saving..." : "Save changes"}
+      </button>
     </ModalWithForm>
   );
 };

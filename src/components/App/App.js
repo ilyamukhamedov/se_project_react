@@ -25,7 +25,7 @@ import { signUp, signIn, update, getUser } from "../../utils/auth";
 import DeleteModal from "../DeleteModal/DeleteModal";
 import LoginModal from "../LoginModal/LoginModal";
 import RegisterModal from "../RegisterModal/RegisterModal";
-import ProtectedRoute from "../../ProtectedRoute/ProtectedRoute";
+import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 import EditProfileModal from "../EditProfileModal/EditProfileModal";
 
 export default function App() {
@@ -44,6 +44,8 @@ export default function App() {
   const [currentUser, setCurrentUser] = useState({});
 
   const [isLiked, setIsLiked] = useState(false);
+
+  const [isLoading, setIsLoading] = useState(false);
 
   const history = useHistory("");
 
@@ -83,25 +85,25 @@ export default function App() {
   };
 
   const handleAddItemSubmit = (values) => {
+    setIsLoading(true);
     loadItems(values)
       .then((data) => {
         setClothingItems([data, ...clothingItems]);
       })
       .then(handleCloseModal)
-      .catch((err) => {
-        console.error(err);
-      });
+      .catch(console.error)
+      .finally(() => setIsLoading(false));
   };
 
   const handleDeleteCard = (cardId) => {
+    setIsLoading(true);
     removeItems(cardId)
       .then(() => {
         setClothingItems(clothingItems.filter((card) => card._id !== cardId));
       })
       .then(handleCloseModal)
-      .catch((err) => {
-        console.error(err);
-      });
+      .catch(console.error)
+      .finally(() => setIsLoading(false));
   };
 
   function checkloggedIn() {
@@ -111,12 +113,11 @@ export default function App() {
         setLoggedIn(true);
         setCurrentUser(res);
       })
-      .catch((err) => {
-        console.error(err);
-      });
+      .catch(console.error);
   }
 
   const loginUser = (user) => {
+    setIsLoading(true);
     signIn(user)
       .then((res) => {
         localStorage.setItem("jwt", res.token);
@@ -124,9 +125,8 @@ export default function App() {
         return checkloggedIn();
       })
       .then(handleCloseModal)
-      .catch((err) => {
-        console.error(err);
-      });
+      .catch(console.error)
+      .finally(() => setIsLoading(false));
   };
 
   const registerUser = (data) => {
@@ -135,21 +135,19 @@ export default function App() {
         loginUser(data);
         setCurrentUser(data);
       })
-      .catch((err) => {
-        console.error(err);
-      });
+      .catch(console.error);
   };
 
   const updateUser = (user) => {
+    setIsLoading(true);
     const jwt = localStorage.getItem("jwt");
     update(user, jwt)
       .then((res) => {
         setCurrentUser(res);
       })
       .then(handleCloseModal)
-      .catch((err) => {
-        console.error(err);
-      });
+      .catch(console.error)
+      .finally(() => setIsLoading(false));
   };
 
   const logoutUser = () => {
@@ -171,9 +169,7 @@ export default function App() {
           );
           setIsLiked(true);
         })
-        .catch((err) => {
-          console.error(err);
-        });
+        .catch(console.error);
     } else {
       dislikeCard(id)
         .then((updatedCard) => {
@@ -182,9 +178,7 @@ export default function App() {
           );
           setIsLiked(false);
         })
-        .catch((err) => {
-          console.error(err);
-        });
+        .catch(console.error);
     }
   };
 
@@ -278,6 +272,7 @@ export default function App() {
             <AddItemModal
               handleCloseModal={handleCloseModal}
               onAddItem={handleAddItemSubmit}
+              isLoading={isLoading}
             />
           )}
           {activeModal === "preview" && (
@@ -293,6 +288,7 @@ export default function App() {
               onClose={handleCloseModal}
               selectedCard={selectedCard}
               handleDeleteCard={handleDeleteCard}
+              isLoading={isLoading}
             />
           )}
           {activeModal === "login" && (
@@ -300,6 +296,7 @@ export default function App() {
               handleCloseModal={handleCloseModal}
               openRegisterModal={handleRegisterModal}
               loginUser={loginUser}
+              isLoading={isLoading}
             />
           )}
           {activeModal === "register" && (
@@ -307,12 +304,14 @@ export default function App() {
               handleCloseModal={handleCloseModal}
               openLogInModal={handleLogInModal}
               registerUser={registerUser}
+              isLoading={isLoading}
             />
           )}
           {activeModal === "edit" && (
             <EditProfileModal
               handleCloseModal={handleCloseModal}
               updateUser={updateUser}
+              isLoading={isLoading}
             />
           )}
         </CurrentTemperatureUnitContext.Provider>

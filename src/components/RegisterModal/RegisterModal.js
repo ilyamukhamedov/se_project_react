@@ -1,7 +1,12 @@
 import { React, useState } from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 
-const RegisterModal = ({ handleCloseModal, registerUser, openLogInModal }) => {
+const RegisterModal = ({
+  handleCloseModal,
+  registerUser,
+  openLogInModal,
+  isLoading,
+}) => {
   const [name, setName] = useState("");
   const [avatar, setUrl] = useState("");
   const [email, setEmail] = useState("");
@@ -33,7 +38,7 @@ const RegisterModal = ({ handleCloseModal, registerUser, openLogInModal }) => {
       title="Sign Up"
       onClose={handleCloseModal}
       onSubmit={handleSubmit}
-      buttonText="Sign Up"
+      // buttonText="Sign Up"
     >
       <label className="modal__label">
         Email *
@@ -85,7 +90,9 @@ const RegisterModal = ({ handleCloseModal, registerUser, openLogInModal }) => {
           onChange={handleUrlChange}
         />
       </label>
-
+      <button className="modal__button modal__button-disabled" type="submit">
+        {isLoading ? "Saving..." : "Sign Up"}
+      </button>
       <button className="modal__link" onClick={openLogInModal}>
         or Log In
       </button>

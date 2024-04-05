@@ -1,7 +1,7 @@
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import { useState } from "react";
 
-const AddItemModal = ({ onAddItem, handleCloseModal }) => {
+const AddItemModal = ({ onAddItem, handleCloseModal, isLoading }) => {
   const [name, setName] = useState("");
 
   const [imageUrl, setUrl] = useState("");
@@ -96,6 +96,9 @@ const AddItemModal = ({ onAddItem, handleCloseModal }) => {
           </label>
         </div>
       </div>
+      <button className="modal__button modal__button-disabled" type="submit">
+        {isLoading ? "Adding..." : "Add garment"}
+      </button>
     </ModalWithForm>
   );
 };

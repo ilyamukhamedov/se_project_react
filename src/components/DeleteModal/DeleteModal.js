@@ -1,7 +1,12 @@
 import React from "react";
 import "./DeleteModal.css";
 
-const DeleteModal = ({ onClose, selectedCard, handleDeleteCard }) => {
+const DeleteModal = ({
+  onClose,
+  selectedCard,
+  handleDeleteCard,
+  isLoading,
+}) => {
   return (
     <section className="modal" onClick={onClose}>
       <div className="delete__modal">
@@ -22,7 +27,7 @@ const DeleteModal = ({ onClose, selectedCard, handleDeleteCard }) => {
               handleDeleteCard(selectedCard._id);
             }}
           >
-            Yes, delete item
+            {isLoading ? "Deleting" : "Yes, delete item"}
           </button>
           <button
             className="delete__button-cancel"

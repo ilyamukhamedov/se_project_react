@@ -44,9 +44,10 @@
   transition: 0.2s ease;
   border: none;
   padding: 0;
-  position: absolute;
+  margin-left: 12px;
+  /* position: absolute;
   bottom: 44px;
-  left: 118px;
+  left: 118px; */
 }
 
 .modal__link:hover {

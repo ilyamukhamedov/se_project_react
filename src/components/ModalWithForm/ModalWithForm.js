@@ -20,12 +20,12 @@ const ModalWithForm = ({
         <form onSubmit={onSubmit}>
           {children}
 
-          <button
+          {/* <button
             className="modal__button modal__button-disabled"
             type="submit"
           >
             {buttonText}
-          </button>
+          </button> */}
         </form>
       </div>
     </div>
