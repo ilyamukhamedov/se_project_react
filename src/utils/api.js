@@ -1,6 +1,6 @@
 export const baseUrl =
   process.env.NODE_ENV === "production"
-    ? "https://wtwr.sktco.com/"
+    ? "https://api.wtwr.sktco.com"
     : "http://localhost:3001";
 
 export function checkResponse(res) {

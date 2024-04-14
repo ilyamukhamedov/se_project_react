@@ -14,7 +14,7 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "deploy": "npm run build && scp -r ./dist/* honeyflym@wtwr.sktco.com:/home/honeyflym/frontend",
+    "deploy": "npm run build && scp -r ./build/* honeyflym@wtwr.sktco.com:/home/honeyflym/frontend",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
