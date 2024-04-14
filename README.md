@@ -16,15 +16,13 @@ https://www.figma.com/file/DTojSwldenF9UPKQZd6RRb/Sprint-10%3A-WTWR
 
 https://github.com/Kreker911/se_project_react
 
-### Back-end 
+### Back-end
 
 https://github.com/Kreker911/se_project_express
 
 ### Deployment
 
-The project(old version for now) is deployed and accessible via the following link:
-
-https://kreker911.github.io/se_project_react/
+https://wtwr.sktco.com
 
 #### Plans for Improvement
 
