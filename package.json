@@ -2,7 +2,7 @@
   "name": "se_project_react",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://kreker911.github.io/se_project_react",
+  "homepage": "https://wtwr.cktco.com",
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
@@ -14,8 +14,7 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
+    "deploy": "npm run build && scp -r ./dist/* honeyflym@wtwr.sktco.com:/home/honeyflym/frontend",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
