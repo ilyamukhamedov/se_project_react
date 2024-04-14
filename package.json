@@ -2,7 +2,7 @@
   "name": "se_project_react",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://wtwr.cktco.com",
+  "homepage": "https://wtwr.sktco.com",
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
