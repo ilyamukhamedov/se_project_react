@@ -261,7 +261,6 @@ export default function App() {
                   clothingItems={clothingItems}
                   logout={logoutUser}
                   editProfile={handleEditProfileModal}
-                  loggedIn={loggedIn}
                   handleCardLike={handleCardLike}
                 />
               </ProtectedRoute>

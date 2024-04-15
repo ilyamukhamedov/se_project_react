@@ -8,7 +8,6 @@ const Profile = ({
   clothingItems,
   logout,
   editProfile,
-  loggedIn,
   handleCardLike,
 }) => (
   <section className="profile__content">
