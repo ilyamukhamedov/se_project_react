@@ -1,10 +1,9 @@
 import { request } from "./api";
+import { APIkey } from "./constants";
 
 const latitude = 25;
 
 const longitude = 55;
-
-const APIkey = "f8f1018b1b0cb458a4680a5de0b2192d";
 
 export const getForecastWeather = () => {
   return request(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=imperial&appid=${APIkey}
