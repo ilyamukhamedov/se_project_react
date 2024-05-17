@@ -16,7 +16,7 @@ https://www.figma.com/file/DTojSwldenF9UPKQZd6RRb/Sprint-10%3A-WTWR
 
 https://github.com/Kreker911/se_project_react
 
-### Back-end
+### Backend
 
 https://github.com/Kreker911/se_project_express
 
