@@ -14,11 +14,11 @@ https://www.figma.com/file/DTojSwldenF9UPKQZd6RRb/Sprint-10%3A-WTWR
 
 ### GitHub Repository
 
-https://github.com/Kreker911/se_project_react
+https://github.com/ilyamukhamedov/se_project_react
 
 ### Backend
 
-https://github.com/Kreker911/se_project_express
+https://github.com/ilyamukhamedov/se_project_express
 
 ### Deployment
 
