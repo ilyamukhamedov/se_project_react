@@ -43,7 +43,7 @@ export default function App() {
 
   const [currentUser, setCurrentUser] = useState({});
 
-  const [isLiked, setIsLiked] = useState(false);
+  const [setIsLiked] = useState(false);
 
   const [isLoading, setIsLoading] = useState(false);
 
