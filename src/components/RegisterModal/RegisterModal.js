@@ -38,7 +38,6 @@ const RegisterModal = ({
       title="Sign Up"
       onClose={handleCloseModal}
       onSubmit={handleSubmit}
-      // buttonText="Sign Up"
     >
       <label className="modal__label">
         Email *

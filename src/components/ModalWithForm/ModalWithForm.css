@@ -19,6 +19,8 @@
   background-color: rgba(0, 0, 0, 0.3);
   backdrop-filter: blur(4px);
   animation: modal-show 0.3s ease;
+  z-index: 2;
+  backdrop-filter: blur(4px);
 }
 
 .modal__container {

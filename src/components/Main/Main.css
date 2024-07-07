@@ -15,15 +15,24 @@
   margin-top: 40px;
 }
 
-.main__cards {
-  width: 100%;
-  max-width: 1360px;
+.main__items {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  max-width: 100%;
+  padding: 0;
+  gap: 20px;
 }
 
-.main__items {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 17px;
-  padding: 0;
-  margin: 0;
+@media screen and (max-width: 640px) {
+  .main__items {
+    grid-template-columns: repeat(auto-fit, minmax(188px, 1fr));
+  }
+}
+
+@media screen and (max-width: 430px) {
+  .main__items {
+    grid-template-columns: repeat(auto-fit, minmax(164px, 1fr));
+    gap: 15px;
+  }
 }
