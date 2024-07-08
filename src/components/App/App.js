@@ -27,6 +27,7 @@ import LoginModal from "../LoginModal/LoginModal";
 import RegisterModal from "../RegisterModal/RegisterModal";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 import EditProfileModal from "../EditProfileModal/EditProfileModal";
+import MenuModal from "../MenuModal/MenuModal";
 
 export default function App() {
   const [activeModal, setActiveModal] = useState("");
@@ -67,6 +68,10 @@ export default function App() {
 
   const handleEditProfileModal = () => {
     setActiveModal("edit");
+  };
+
+  const handleMobileModal = () => {
+    setActiveModal("mobile");
   };
 
   const handleCloseModal = () => {
@@ -243,6 +248,7 @@ export default function App() {
               onCreateModal={handleCreateModal}
               onLogInModal={handleLogInModal}
               onRegisterModal={handleRegisterModal}
+              onMobileModal={handleMobileModal}
               loggedIn={loggedIn}
             />
             <Switch>
@@ -252,6 +258,7 @@ export default function App() {
                   onSelectCard={handleSelectedCard}
                   clothingItems={clothingItems}
                   handleCardLike={handleCardLike}
+                  isLoggedIn={loggedIn}
                 />
               </Route>
               <ProtectedRoute path="/profile" loggedIn={loggedIn}>
@@ -311,6 +318,16 @@ export default function App() {
               handleCloseModal={handleCloseModal}
               updateUser={updateUser}
               isLoading={isLoading}
+            />
+          )}
+          {activeModal === "mobile" && (
+            <MenuModal
+              handleCloseModal={handleCloseModal}
+              onCreateModal={handleCreateModal}
+              onLogInModal={handleLogInModal}
+              onRegisterModal={handleRegisterModal}
+              onMobileModal={handleMobileModal}
+              loggedIn={loggedIn}
             />
           )}
         </CurrentTemperatureUnitContext.Provider>

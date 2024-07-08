@@ -1,12 +1,13 @@
 .main {
   display: flex;
   flex-direction: column;
-  margin: auto;
+  position: relative;
 }
 
 .main__title {
   color: #000;
   font-family: "Cabinet Grotesk", sans-serif;
+  display: flex;
   font-size: 20px;
   font-style: normal;
   font-weight: 700;

@@ -1,9 +1,8 @@
 import "./Header.css";
 import logo from "../../images/Logo.svg";
-import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
-import { useContext } from "react";
-import CurrentUserContext from "../../contexts/CurrentUserContext";
+import Nav from "../Nav/Nav";
+import BurgerIcon from "../../images/burgerButton.svg";
 
 const currentDate = new Date().toLocaleString("default", {
   month: "long",
@@ -15,10 +14,9 @@ const Header = ({
   cityName,
   onLogInModal,
   onRegisterModal,
+  onMobileModal,
   loggedIn,
 }) => {
-  const currentUser = useContext(CurrentUserContext);
-
   return (
     <header className="header">
       <div className="header__main">
@@ -30,56 +28,21 @@ const Header = ({
         </div>
       </div>
       <div className="header__profile">
-        <ToggleSwitch />
-        {loggedIn ? (
-          <>
-            <div>
-              <button
-                className="header__button"
-                type="text"
-                onClick={onCreateModal}
-              >
-                + Add clothes
-              </button>
-            </div>
-            <Link to="/profile" className="header__profile-name">
-              {currentUser.name}
-            </Link>
-            <div>
-              {currentUser.avatar.length > 20 ? (
-                <img
-                  className="header__profile-image"
-                  src={currentUser.avatar}
-                  alt="Avatar logo"
-                />
-              ) : (
-                <div className="header__span-container">
-                  <span className="header__span">
-                    {currentUser.name.toUpperCase().charAt(0) || ""}
-                  </span>
-                </div>
-              )}
-            </div>
-          </>
-        ) : (
-          <>
-            <button
-              type="button"
-              onClick={onRegisterModal}
-              className="header__button"
-            >
-              Sign Up
-            </button>
-            <button
-              type="button"
-              onClick={onLogInModal}
-              className="header__button"
-            >
-              Log In
-            </button>
-          </>
-        )}
+        <Nav
+          onMobileModal={onMobileModal}
+          loggedIn={loggedIn}
+          onLogInModal={onLogInModal}
+          onRegisterModal={onRegisterModal}
+          onCreateModal={onCreateModal}
+        />
       </div>
+      <img
+        className="header__hamburger"
+        src={BurgerIcon}
+        onClick={onMobileModal}
+      >
+        {/* &#9776; */}
+      </img>
     </header>
   );
 };
