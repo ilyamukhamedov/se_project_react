@@ -19,7 +19,7 @@ const ClothesSection = ({
         </button>
       </div>
 
-      <ul className="clothes__cards-list">
+      <ul className="main__items">
         {clothingItems.map((item) => {
           const isOwn = item.owner === currentUser?._id;
           if (isOwn) {

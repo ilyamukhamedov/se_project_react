@@ -38,11 +38,10 @@ const Header = ({
       </div>
       <img
         className="header__hamburger"
+        alt="menu icon"
         src={BurgerIcon}
         onClick={onMobileModal}
-      >
-        {/* &#9776; */}
-      </img>
+      />
     </header>
   );
 };

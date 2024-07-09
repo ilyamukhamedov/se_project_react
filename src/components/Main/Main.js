@@ -33,7 +33,7 @@ const Main = ({
         return "cold";
       }
     }
-  }, [temp]);
+  }, [temp, currentTemperatureUnit]);
 
   const filteredCards = clothingItems.filter((item) => {
     return item.weather.toLowerCase() === weatherType;
