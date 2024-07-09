@@ -41,14 +41,20 @@
 
 .header__hamburger {
   display: none;
-  font-size: 60px;
-  background: none;
-  /* border: 2px solid rgba(0, 0, 0); */
+  padding: 2px;
+  /* border: 1px solid rgba(0, 0, 0); */
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
   border-radius: 10px;
   cursor: pointer;
   background-image: url(../../images/burgerButton.svg);
   color: #000;
   width: 30px;
+  transition: 0.2s ease;
+}
+
+.header__hamburger:hover {
+  /* opacity: 0.6; */
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
 }
 
 @media (max-width: 640px) {

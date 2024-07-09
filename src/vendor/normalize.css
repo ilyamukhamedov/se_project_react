@@ -180,3 +180,9 @@ template {
 [hidden] {
   display: none;
 }
+
+@media screen and (max-width: 640px) {
+  body {
+    margin: 32px 15px;
+  }
+}
