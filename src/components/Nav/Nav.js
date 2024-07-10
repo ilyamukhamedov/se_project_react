@@ -11,6 +11,7 @@ const Nav = ({ onCreateModal, onRegisterModal, onLogInModal, loggedIn }) => {
   return (
     <>
       <ToggleSwitch />
+
       {loggedIn ? (
         <>
           <div>

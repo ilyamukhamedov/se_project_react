@@ -2,6 +2,7 @@
   display: flex;
   flex-direction: column;
   position: relative;
+  max-width: 1360px;
 }
 
 .main__title {
@@ -17,23 +18,11 @@
 }
 
 .main__items {
-  list-style: none;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   max-width: 100%;
-  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
   gap: 20px;
-}
-
-@media screen and (max-width: 640px) {
-  .main__items {
-    grid-template-columns: repeat(auto-fit, minmax(188px, 1fr));
-  }
-}
-
-@media screen and (max-width: 430px) {
-  .main__items {
-    grid-template-columns: repeat(auto-fit, minmax(164px, 1fr));
-    gap: 15px;
-  }
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }

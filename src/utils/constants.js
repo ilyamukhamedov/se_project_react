@@ -87,6 +87,13 @@ export const weatherOptions = [
   },
 
   {
+    url: require("../images/dustDay.svg").default,
+    day: true,
+    type: "Dust",
+    alt: "dustDay",
+  },
+
+  {
     url: require("../images/moonNight.svg").default,
     day: false,
     type: "Clear",
@@ -126,6 +133,13 @@ export const weatherOptions = [
     day: false,
     type: "Mist",
     alt: "mistNight",
+  },
+
+  {
+    url: require("../images/dustNight.svg").default,
+    day: false,
+    type: "Dust",
+    alt: "dustNight",
   },
 ];
 
