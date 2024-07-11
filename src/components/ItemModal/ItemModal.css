@@ -1,6 +1,7 @@
 .item__image {
   width: 100%;
   object-fit: cover;
+  max-height: 498px;
 }
 
 .item__section {
