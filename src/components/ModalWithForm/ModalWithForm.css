@@ -35,6 +35,11 @@
   margin: 5px;
 }
 
+.modal__container-preview {
+  padding: 0;
+  overflow: hidden;
+}
+
 .modal__link {
   color: #000;
   background-color: #fff;

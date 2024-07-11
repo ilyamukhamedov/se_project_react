@@ -1,6 +1,7 @@
 .menu {
   display: flex;
-  flex-direction: column;
+  flex-direction: column-reverse;
   align-items: center;
   gap: 20px;
+  padding: 20px;
 }

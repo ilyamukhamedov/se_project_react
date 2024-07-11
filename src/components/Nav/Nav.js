@@ -5,7 +5,13 @@ import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
 import { useContext } from "react";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
 
-const Nav = ({ onCreateModal, onRegisterModal, onLogInModal, loggedIn }) => {
+const Nav = ({
+  onCreateModal,
+  onRegisterModal,
+  onLogInModal,
+  loggedIn,
+  onClose,
+}) => {
   const currentUser = useContext(CurrentUserContext);
 
   return (
@@ -14,15 +20,13 @@ const Nav = ({ onCreateModal, onRegisterModal, onLogInModal, loggedIn }) => {
 
       {loggedIn ? (
         <>
-          <div>
-            <button className="nav__button" type="text" onClick={onCreateModal}>
-              + Add clothes
-            </button>
-          </div>
-          <Link to="/profile" className="nav__profile-name">
-            {currentUser.name}
-          </Link>
-          <div>
+          <button className="nav__button" type="text" onClick={onCreateModal}>
+            + Add clothes
+          </button>
+
+          <Link to="/profile" className="nav__profile" onClick={onClose}>
+            <p className="nav__profile-name">{currentUser.name}</p>
+
             {currentUser.avatar.length > 20 ? (
               <img
                 className="nav__profile-image"
@@ -36,7 +40,7 @@ const Nav = ({ onCreateModal, onRegisterModal, onLogInModal, loggedIn }) => {
                 </span>
               </div>
             )}
-          </div>
+          </Link>
         </>
       ) : (
         <>

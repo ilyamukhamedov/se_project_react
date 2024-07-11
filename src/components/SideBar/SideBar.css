@@ -6,6 +6,8 @@
 
 .side__profile-container {
   display: flex;
+  align-items: center;
+  gap: 16px;
 }
 
 .side__logo {
@@ -23,8 +25,8 @@
   font-style: normal;
   font-weight: 700;
   line-height: normal;
-  width: 180px;
-  margin: 16px 0 16px 16px;
+
+  margin: 0;
 }
 
 .side__options-container {
@@ -33,6 +35,7 @@
   flex-direction: column;
   align-items: flex-start;
   margin-top: 24px;
+  width: 180px;
 }
 
 .side__button {

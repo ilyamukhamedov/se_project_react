@@ -1,20 +1,13 @@
 .item__image {
-  width: 498px;
-  height: 498px;
-  margin: auto;
+  width: 100%;
+  object-fit: cover;
 }
 
-.item__modal {
-  align-items: center;
-  width: 498px;
-  height: 610px;
-  border-radius: 20px;
-  border: 1px solid rgba(0, 0, 0, 0.3);
-  box-shadow: 0px 0px 25px 0px rgba(0, 0, 0, 0.15);
-  background: #fff;
-  position: relative;
-  overflow: hidden;
-  padding: 0;
+.item__section {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 20px 32px;
 }
 
 .item__name {
@@ -24,7 +17,10 @@
   font-style: normal;
   font-weight: 700;
   line-height: 24px;
-  margin: 20px 0 12px 32px;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  gap: 12px;
 }
 
 .item__weather {
@@ -34,7 +30,6 @@
   font-style: normal;
   font-weight: 700;
   line-height: 24px;
-  margin: 0 0 32px 32px;
 }
 
 .item__delete-button {
@@ -47,9 +42,7 @@
   color: #ff4d00;
   border: none;
   background: transparent;
-  position: absolute;
-  top: 518px;
-  left: 365px;
+  padding: 0;
   transition: 0.2s ease;
 }
 

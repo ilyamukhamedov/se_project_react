@@ -4,8 +4,17 @@
 .page {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  padding: 32px 40px;
 }
 
 .page__section {
-  margin: auto;
+  max-width: 1360px;
+  width: 100%;
+}
+
+@media screen and (max-width: 640px) {
+  .page {
+    padding: 32px 15px;
+  }
 }

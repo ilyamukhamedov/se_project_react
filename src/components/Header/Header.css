@@ -42,7 +42,6 @@
 .header__hamburger {
   display: none;
   padding: 2px;
-  /* border: 1px solid rgba(0, 0, 0); */
   box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
   border-radius: 10px;
   cursor: pointer;
@@ -53,7 +52,6 @@
 }
 
 .header__hamburger:hover {
-  /* opacity: 0.6; */
   box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
 }
 

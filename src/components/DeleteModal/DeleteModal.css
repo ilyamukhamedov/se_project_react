@@ -1,16 +1,8 @@
-.delete__modal {
-  display: flex;
-  width: 670px;
-  height: 280px;
-  border-radius: 20px;
-  background-color: #fff;
-  position: relative;
-}
-
 .delete__container {
   display: flex;
   flex-direction: column;
   margin: auto;
+  padding: 20px 0;
 }
 
 .delete__container-text {

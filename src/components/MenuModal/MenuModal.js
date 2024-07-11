@@ -20,6 +20,7 @@ const MenuModal = ({
           onLogInModal={onLogInModal}
           onRegisterModal={onRegisterModal}
           onCreateModal={onCreateModal}
+          onClose={handleCloseModal}
         />
       </div>
     </ModalWithForm>

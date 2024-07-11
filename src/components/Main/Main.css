@@ -19,10 +19,42 @@
 
 .main__items {
   max-width: 1360px;
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  justify-content: center;
+  justify-items: center;
   gap: 20px;
   list-style: none;
   padding: 0;
   margin: 0;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+@media (min-width: 1024px) {
+  .main__items {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .main__items-clothes {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 1024px) {
+  .main__items {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .main__items {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .main__items {
+    grid-template-columns: 1fr;
+  }
 }

@@ -1,5 +1,5 @@
 .footer {
-  margin-top: 171px;
+  margin-top: 20px;
 }
 
 .footer__text {
@@ -12,4 +12,8 @@
   font-weight: 500;
   line-height: 20px;
   max-width: 1360px;
+}
+
+.footer__link {
+  color: #000;
 }

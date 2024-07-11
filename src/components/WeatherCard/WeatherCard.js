@@ -7,7 +7,6 @@ const WeatherCard = ({ day, alt, type, weatherTemp = "" }) => {
   const { currentTemperatureUnit } = useContext(CurrentTemperatureUnitContext);
 
   const imageSrc = weatherOptions.find((item) => {
-    console.log(type);
     return item.day === day && item.type === type;
   });
 

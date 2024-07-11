@@ -39,6 +39,18 @@
   opacity: 0.5;
 }
 
+.nav__profile {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  transition: 0.2s ease;
+  text-decoration: none;
+}
+
+.nav__profile:hover {
+  opacity: 0.5;
+}
+
 .nav__profile-name {
   color: #000;
   font-family: "Cabinet Grotesk", sans-serif;
@@ -48,11 +60,7 @@
   line-height: normal;
   cursor: pointer;
   text-decoration: none;
-  transition: 0.2s ease;
-}
-
-.nav__profile-name:hover {
-  opacity: 0.5;
+  margin: 0;
 }
 
 .nav__profile-image {
