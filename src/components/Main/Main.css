@@ -27,6 +27,7 @@
   padding: 0;
   margin: 0;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  min-height: calc(100vh - 401px);
 }
 
 @media (min-width: 1024px) {
