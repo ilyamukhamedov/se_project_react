@@ -22,7 +22,7 @@ https://github.com/ilyamukhamedov/se_project_express
 
 ### Deployment
 
-https://wtwr.sktco.com
+https://www.wtwr.space
 
 #### Plans for Improvement
 
