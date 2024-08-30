@@ -1,5 +1,6 @@
 import { request, baseUrl } from "./api";
 const headers = {
+  Accept: "application/json",
   "Content-Type": "application/json",
 };
 
