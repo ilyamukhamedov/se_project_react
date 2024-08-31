@@ -26,7 +26,8 @@ https://www.wtwr.space
 
 #### Plans for Improvement
 
-- Resonsive design
-- Smooth closing modals
-- Change default card image design
 - Add current location in header
+
+### Screenshots
+
+<img src="https://github.com/ilyamukhamedov/se_project_react/blob/main/src/images/Main.png" width="600"/>
