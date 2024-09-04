@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { request } from "../utils/api";
+import { GEOkey } from "../utils/constants";
 
 const useGeo = () => {
   const [location, setLocation] = useState({ latitude: null, longitude: null });
@@ -30,8 +31,7 @@ const useGeo = () => {
   }, []);
 
   const fetchCityFromCoords = (latitude, longitude) => {
-    const apiKey = "AIzaSyDH_ojcRPUuoDkAOsXGXOrdHt9rz5d2yMs";
-    const url = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=${apiKey}&language=en`;
+    const url = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=${GEOkey}&language=en`;
 
     return request(url)
       .then((data) => {

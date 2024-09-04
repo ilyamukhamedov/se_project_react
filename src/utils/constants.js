@@ -144,3 +144,5 @@ export const weatherOptions = [
 ];
 
 export const APIkey = process.env.REACT_APP_API_KEY;
+
+export const GEOkey = process.env.REACT_APP_GEO_KEY;
