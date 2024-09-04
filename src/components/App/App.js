@@ -28,6 +28,8 @@ import RegisterModal from "../RegisterModal/RegisterModal";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 import EditProfileModal from "../EditProfileModal/EditProfileModal";
 import MenuModal from "../MenuModal/MenuModal";
+import useGeo from "../../hooks/useGeo";
+import { APIkey } from "../../utils/constants";
 
 export default function App() {
   const [activeModal, setActiveModal] = useState("");
@@ -49,6 +51,8 @@ export default function App() {
   const [isLoading, setIsLoading] = useState(false);
 
   const history = useHistory("");
+
+  const { location, city } = useGeo();
 
   const handleCreateModal = () => {
     setActiveModal("create");
@@ -189,13 +193,17 @@ export default function App() {
 
   useEffect(() => {
     fetchItems().then(setClothingItems).catch(console.error);
-
-    getForecastWeather()
-      .then((data) => {
-        setWeather(parseWeatherData(data));
-      })
-      .catch(console.error);
   }, []);
+
+  useEffect(() => {
+    if (location.latitude && location.longitude) {
+      getForecastWeather(location.latitude, location.longitude, APIkey)
+        .then((data) => {
+          setWeather(parseWeatherData(data));
+        })
+        .catch(console.error);
+    }
+  }, [location]);
 
   useEffect(() => {
     if (!activeModal) return;
@@ -244,7 +252,7 @@ export default function App() {
         >
           <div className="page__section">
             <Header
-              cityName={weather.city}
+              cityName={city}
               onCreateModal={handleCreateModal}
               onLogInModal={handleLogInModal}
               onRegisterModal={handleRegisterModal}

@@ -24,7 +24,7 @@ const Header = ({
           <img className="header__logo" src={logo} alt="avatar" />
         </Link>
         <div className="header__date">
-          {currentDate}, {cityName}
+          {currentDate}, {cityName || "Detecting..."}
         </div>
       </div>
       <div className="header__profile">
